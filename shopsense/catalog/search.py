@@ -13,6 +13,7 @@ from __future__ import annotations
 import hashlib
 import logging
 import sqlite3
+import time
 from pathlib import Path
 from typing import List, Optional, Tuple
 
@@ -260,8 +261,10 @@ def build_embedding_cache(force: bool = False) -> bool:
         try:
             vecs = model.embed_documents(batch)
             all_embeddings.extend(vecs)
+            if i + batch_size < len(texts):
+                time.sleep(1.0)
         except Exception as e:
-            logger.error("Embedding batch %d failed: %s", i // batch_size, e)
+            logger.warning("Embedding batch %d paused / failed: %s (using keyword fallback)", i // batch_size, e)
             return False
 
     matrix = np.array(all_embeddings, dtype=np.float32)

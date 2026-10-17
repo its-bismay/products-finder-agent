@@ -51,7 +51,7 @@ GOOGLE_API_KEY: str | None = _get_secret("GOOGLE_API_KEY")
 
 GEMINI_MODEL: str = _get_secret("GEMINI_MODEL") or "gemini-3.1-flash-lite"
 GEMINI_EMBEDDING_MODEL: str = (
-    _get_secret("GEMINI_EMBEDDING_MODEL") or "models/text-embedding-004"
+    _get_secret("GEMINI_EMBEDDING_MODEL") or "models/gemini-embedding-001"
 )
 
 GEMINI_AVAILABLE: bool = bool(GOOGLE_API_KEY)

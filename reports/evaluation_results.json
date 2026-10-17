@@ -1,13 +1,13 @@
 {
-  "run_timestamp": "2026-10-17T16:44:32.467502+00:00",
+  "run_timestamp": "2026-10-17T17:01:20.498971+00:00",
   "summary": {
     "total": 20,
-    "passed": 15,
-    "failed": 5,
-    "overall_pass_rate": 0.75,
+    "passed": 14,
+    "failed": 6,
+    "overall_pass_rate": 0.7,
     "retrieval_cases": 15,
-    "avg_recall_at_5": 0.4633,
-    "avg_precision_at_5": 0.1467,
+    "avg_recall_at_5": 0.45,
+    "avg_precision_at_5": 0.1333,
     "guardrail_cases": 4,
     "guardrail_pass_rate": 1.0,
     "by_category": {
@@ -21,7 +21,7 @@
       },
       "category_navigation": {
         "total": 2,
-        "passed": 1
+        "passed": 0
       },
       "semantic_retrieval": {
         "total": 3,
@@ -216,25 +216,25 @@
         "50457775"
       ],
       "actual_product_ids": [
-        "00326536",
-        "00334701",
-        "00406298",
-        "00511954",
-        "00537671",
-        "00572099",
-        "00583719",
-        "00590499",
+        "50445985",
         "00607305",
-        "00612378",
-        "10191631",
-        "10309782"
+        "10601628",
+        "20607309",
+        "30604292",
+        "30607304",
+        "40607313",
+        "40632789",
+        "50607303",
+        "50607317",
+        "50610541",
+        "50621686"
       ],
-      "passed": true,
-      "failure_reason": null,
+      "passed": false,
+      "failure_reason": "recall@5=0.00, no expected ID retrieved",
       "guardrail_triggered": false,
       "guardrail_expected": false,
-      "precision": 0.2,
-      "recall": 0.2,
+      "precision": 0.0,
+      "recall": 0.0,
       "error": null
     },
     {
@@ -249,14 +249,14 @@
         "00502110",
         "00502370",
         "00502389",
+        "00559465",
+        "00590507",
         "00608772",
         "00620298",
         "00627662",
-        "10377945",
-        "10502143",
-        "10528416",
-        "10594152",
-        "20599516"
+        "10270143",
+        "10342135",
+        "10377945"
       ],
       "passed": false,
       "failure_reason": "recall@5=0.00, no expected ID retrieved",

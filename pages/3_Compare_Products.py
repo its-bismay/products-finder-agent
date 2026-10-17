@@ -142,7 +142,8 @@ else:
                 "products_context": context_text,
                 "count": len(selected_products),
             })
-            summary_text = res.content
+            from shopsense.agent.shopping_agent import _extract_text_content
+            summary_text = _extract_text_content(res.content)
         except Exception as e:
             # Fallback to deterministic summary
             pass

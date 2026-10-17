@@ -187,6 +187,25 @@ def _format_products_for_prompt(products: List[Product]) -> str:
     return "\n".join(lines)
 
 
+def _extract_text_content(content: Any) -> str:
+    """Safely extract string text from AIMessage content, handling string or list-of-dicts."""
+    if isinstance(content, str):
+        return content.strip()
+    if isinstance(content, list):
+        parts = []
+        for item in content:
+            if isinstance(item, str):
+                parts.append(item)
+            elif isinstance(item, dict) and "text" in item:
+                parts.append(str(item["text"]))
+            elif hasattr(item, "text"):
+                parts.append(str(getattr(item, "text")))
+            else:
+                parts.append(str(item))
+        return "\n".join(parts).strip()
+    return str(content).strip()
+
+
 def generate_response(
     intent: ShoppingIntent,
     products: List[Product],
@@ -215,7 +234,7 @@ def generate_response(
             "product_count": len(products),
             "retrieval_method": retrieval_method,
         })
-        return result.content.strip()
+        return _extract_text_content(result.content)
     except Exception as e:
         logger.error("Response generation failed: %s", e)
         return (
@@ -238,7 +257,7 @@ def generate_comparison_summary(products: List[Product]) -> str:
             "products_context": _format_products_for_prompt(products),
             "count": len(products),
         })
-        return result.content.strip()
+        return _extract_text_content(result.content)
     except Exception as e:
         logger.error("Comparison generation failed: %s", e)
         return ""
