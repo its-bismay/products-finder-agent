@@ -1,0 +1,30 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Raw dataset files and spreadsheets
+data-cleaning/*.csv
+*.xlsx
+*.xls
+
+# Temporary files
+*.tmp
+.pytest_cache/
+*.npz
+
+# Note: Explicitly keep catalog database and cleaned dataset
+!data_cleaning/cleaned_dataset.csv
+!data/products.db
+!data/evaluation_cases.json
